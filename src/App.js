@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div className="App"> 
-      <React.StrictMode>
+      
       <div className="header">
         <Filter setFilterTitle={setFilterTitle} setFilterRating={setFilterRating} filterRating={filterRating} />
       </div>
@@ -46,7 +46,7 @@ function App() {
         
       </div> */}
       <MovieList movies= {movies} filterTitle={filterTitle} filterRating={filterRating} />
-    </React.StrictMode>
+    
     </div>
   );
 }
