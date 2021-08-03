@@ -3,10 +3,11 @@ import { Card } from 'react-bootstrap';
 import { Rating } from '@material-ui/lab';
 import '../App.css';
 
+
 const MovieCard = ({movie}) => {
     return (
         <div>
-           <Card className="card-movie" style={{ width: '20rem' }}>
+           <Card className="card-movie" style={{ width: '20rem' }} >
                 <Card.Img className="poster" variant="top" src={movie.posterURL} />
                 <Card.Body className="movie">
                     <Card.Title><h3>{movie.title}</h3></Card.Title>  

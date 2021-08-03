@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Modal } from 'react-bootstrap';
 import '../App.css';
 
 
@@ -9,12 +9,19 @@ const AddMovie = ({movies, setMovies, visible, handleClose}) => {
     const [addType, setAddType] = useState("");
     const [addDescription, setAddDescription] = useState("");
     const [addImageUrl, setAddImageUrl] = useState("");
+    const [addVideoUrl, setAddVideoUrl] = useState("");
     const [addRating, setAddRating] = useState(0);
-    
+  
     return (
-       
-     <div className = "form-add">
-       
+        <>
+     {/* <div className = "form-add"> */}
+       <Modal show= {visible} onHide={handleClose}  size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered>
+          <Modal.Header closeButton>
+            <Modal.Title id="contained-modal-title-vcenter">Adding Movie</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
            <Form>
                 <Form.Group className="mb-3" controlId="formBasicTitle">
                     <Form.Label>Title:</Form.Label>
@@ -36,6 +43,11 @@ const AddMovie = ({movies, setMovies, visible, handleClose}) => {
                     <Form.Control type="text" placeholder="Enter the path of poster" value={addImageUrl}
                      onChange={(e) => setAddImageUrl(e.target.value)}/>
                 </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicVideo">
+                    <Form.Label>Video URL:</Form.Label>
+                    <Form.Control type="text" placeholder="Enter the path of trailer" value={addVideoUrl}
+                     onChange={(e) => setAddVideoUrl(e.target.value)}/>
+                </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicDescription">
                 <Form.Label>Description:</Form.Label>
                         <Form.Control
@@ -52,7 +64,8 @@ const AddMovie = ({movies, setMovies, visible, handleClose}) => {
                      onChange={(e) => setAddRating(parseInt(e.target.value))}/>
                 </Form.Group>
                 </Form> 
-            
+            </Modal.Body>
+            <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>Close</Button>
       
                 <Button variant="primary" type="submit" onClick={(e) =>{
@@ -65,21 +78,19 @@ const AddMovie = ({movies, setMovies, visible, handleClose}) => {
                         type: addType,
                         description: addDescription, 
                         posterURL: addImageUrl, 
+                        videoURL: addVideoUrl, 
                         rating: addRating    
                     }]);
-                    // setAddTitle("");
-                    // setAddType("");
-                    // setAddDate("");
-                    // setAddImageUrl("");
-                    // setAddDescription("")
+                   
                     handleClose()
                 } }>
                     Save Changes
                 </Button>
+            </Modal.Footer>
             
-            
-       </div>
-       
+       {/* </div> */}
+       </Modal>
+       </>
     );
 };
 
